@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    about me |  
+    基础算法总结:递归,贪心,搜索 |  
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -56,7 +56,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-about-me"
+  id="post-基础算法总结-递归-贪心-搜索"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -67,7 +67,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  about me
+  基础算法总结:递归,贪心,搜索
 </h1>
  
 
@@ -75,14 +75,14 @@
      
     <div class="article-meta">
       <a href="" class="article-date">
-  <time datetime="2020-09-11T04:31:31.000Z" itemprop="datePublished">2020-09-11</time>
+  <time datetime="2020-10-28T01:00:45.000Z" itemprop="datePublished">2020-10-28</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2</span>
+            <span class="post-count">434</span>
         </span>
     </span>
 
@@ -106,8 +106,23 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="a">A</h2>
-<h3 id="bb">BB</h3>
+  <h1>搜索算法总结</h1>
+<p>搜索其实是一种更高效的枚举，这一部分将总结经典的搜索题目，搜索策略，和进行搜索时需要注意的小细节</p>
+<h2 id="搜索基本模板">搜索基本模板</h2>
+<ul>
+<li>DFS</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(当前情况)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(到达枚举终点)&#123;</span><br><span class="line">        记录答案;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(枚举所有可扩展方向)&#123;</span><br><span class="line">        <span class="keyword">if</span>(方向可行)&#123;</span><br><span class="line">            记录现场;</span><br><span class="line">            dfs(扩展的方向);</span><br><span class="line">            清除现场;   <span class="comment">//回溯</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>BFS</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">(当前情况)</span></span>&#123;</span><br><span class="line">    更新答案，起点入队;</span><br><span class="line">    <span class="keyword">while</span>(队列非空)&#123;</span><br><span class="line">        取出队首,队首出队;</span><br><span class="line">        <span class="keyword">for</span>(枚举所有可扩展方向)&#123;</span><br><span class="line">            <span class="keyword">if</span>(方向可行)&#123;</span><br><span class="line">                记录现场;</span><br><span class="line">                当前方向入队;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="">P1219 八皇后</a></li>
+</ul>
+<p>八皇后问题是最为经典的搜索问题，在于搜索的策略十分直观清晰。</p>
+<p>与迷宫，联通性问题等相似，搜索范围被限定在一个棋盘上，每个可选方向就被抽象为地图上的坐标</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 101</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,ans,a[M];             <span class="comment">//记录第i行棋子的列数</span></span><br><span class="line"><span class="comment">//b1代表列数,b2代表左斜线,b3代表右斜线</span></span><br><span class="line"><span class="keyword">int</span> b1[M], b2[M], b3[M];    <span class="comment">//判断是否在其他棋子的攻击范围内</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x&gt;n)&#123;</span><br><span class="line">        ans++;</span><br><span class="line">        <span class="keyword">if</span>(ans&lt;=<span class="number">3</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n;i++) </span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n;i++)&#123;    <span class="comment">//按列枚举</span></span><br><span class="line">        <span class="keyword">if</span>( b1[i]==<span class="number">0</span> &amp;&amp; b2[x+i]==<span class="number">0</span> &amp;&amp; b3[x-i+<span class="number">2</span>*n<span class="number">-1</span>]==<span class="number">0</span> )&#123;</span><br><span class="line">            a[x] = i;</span><br><span class="line">            b1[i] = <span class="number">1</span>, b2[x+i] = <span class="number">1</span>, b3[x-i+<span class="number">2</span>*n<span class="number">-1</span>] = <span class="number">1</span>;</span><br><span class="line">            dfs(x+<span class="number">1</span>);</span><br><span class="line">            b1[i] = <span class="number">0</span>, b2[x+i] = <span class="number">0</span>, b3[x-i+<span class="number">2</span>*n<span class="number">-1</span>] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    dfs(<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
  
       <!-- reward -->
       
@@ -160,30 +175,23 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/09/11/about-me/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/10/28/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93-%E9%80%92%E5%BD%92-%E8%B4%AA%E5%BF%83-%E6%90%9C%E7%B4%A2/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" rel="tag">基础算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E6%90%9C%E7%B4%A2/" rel="tag">搜索</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li></ul>
+
     </footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="../../../10/28/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93-%E9%80%92%E5%BD%92-%E8%B4%AA%E5%BF%83-%E6%90%9C%E7%B4%A2/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            基础算法总结:递归,贪心,搜索
-          
-        </div>
-      </a>
     
-    
-      <a href="../../05/%E5%88%9D%E8%AF%86%E7%BB%93%E6%9E%84%E6%A8%A1%E6%9D%BF%EF%BC%9Apair%E7%B1%BB%E5%9E%8B%E7%AE%80%E8%B0%88/" class="article-nav-link">
+      <a href="../../../09/11/about-me/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">初识结构模板：pair类型简谈</div>
+        <div class="article-nav-title">about me</div>
       </a>
     
   </nav>

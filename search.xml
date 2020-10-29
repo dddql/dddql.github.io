@@ -524,4 +524,32 @@ A&lt;&lt;2 : 340</p>
 <h3 id="bb">BB</h3>
 ]]></content>
   </entry>
+  <entry>
+    <title>基础算法总结:递归,贪心,搜索</title>
+    <url>/2020/10/28/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93-%E9%80%92%E5%BD%92-%E8%B4%AA%E5%BF%83-%E6%90%9C%E7%B4%A2/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1>搜索算法总结</h1>
+<p>搜索其实是一种更高效的枚举，这一部分将总结经典的搜索题目，搜索策略，和进行搜索时需要注意的小细节</p>
+<h2 id="搜索基本模板">搜索基本模板</h2>
+<ul>
+<li>DFS</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(当前情况)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(到达枚举终点)&#123;</span><br><span class="line">        记录答案;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(枚举所有可扩展方向)&#123;</span><br><span class="line">        <span class="keyword">if</span>(方向可行)&#123;</span><br><span class="line">            记录现场;</span><br><span class="line">            dfs(扩展的方向);</span><br><span class="line">            清除现场;   <span class="comment">//回溯</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>BFS</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">(当前情况)</span></span>&#123;</span><br><span class="line">    更新答案，起点入队;</span><br><span class="line">    <span class="keyword">while</span>(队列非空)&#123;</span><br><span class="line">        取出队首,队首出队;</span><br><span class="line">        <span class="keyword">for</span>(枚举所有可扩展方向)&#123;</span><br><span class="line">            <span class="keyword">if</span>(方向可行)&#123;</span><br><span class="line">                记录现场;</span><br><span class="line">                当前方向入队;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="">P1219 八皇后</a></li>
+</ul>
+<p>八皇后问题是最为经典的搜索问题，在于搜索的策略十分直观清晰。</p>
+<p>与迷宫，联通性问题等相似，搜索范围被限定在一个棋盘上，每个可选方向就被抽象为地图上的坐标</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 101</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,ans,a[M];             <span class="comment">//记录第i行棋子的列数</span></span><br><span class="line"><span class="comment">//b1代表列数,b2代表左斜线,b3代表右斜线</span></span><br><span class="line"><span class="keyword">int</span> b1[M], b2[M], b3[M];    <span class="comment">//判断是否在其他棋子的攻击范围内</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x&gt;n)&#123;</span><br><span class="line">        ans++;</span><br><span class="line">        <span class="keyword">if</span>(ans&lt;=<span class="number">3</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n;i++) </span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[i]);</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n;i++)&#123;    <span class="comment">//按列枚举</span></span><br><span class="line">        <span class="keyword">if</span>( b1[i]==<span class="number">0</span> &amp;&amp; b2[x+i]==<span class="number">0</span> &amp;&amp; b3[x-i+<span class="number">2</span>*n<span class="number">-1</span>]==<span class="number">0</span> )&#123;</span><br><span class="line">            a[x] = i;</span><br><span class="line">            b1[i] = <span class="number">1</span>, b2[x+i] = <span class="number">1</span>, b3[x-i+<span class="number">2</span>*n<span class="number">-1</span>] = <span class="number">1</span>;</span><br><span class="line">            dfs(x+<span class="number">1</span>);</span><br><span class="line">            b1[i] = <span class="number">0</span>, b2[x+i] = <span class="number">0</span>, b3[x-i+<span class="number">2</span>*n<span class="number">-1</span>] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    dfs(<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>递归</tag>
+        <tag>基础算法</tag>
+        <tag>搜索</tag>
+        <tag>贪心</tag>
+      </tags>
+  </entry>
 </search>
