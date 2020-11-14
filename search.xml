@@ -746,4 +746,43 @@ A&lt;&lt;2 : 340</p>
         <tag>数据结构</tag>
       </tags>
   </entry>
+  <entry>
+    <title>rand()函数产生随机数</title>
+    <url>/2020/11/14/rand()%E5%87%BD%E6%95%B0%E4%BA%A7%E7%94%9F%E9%9A%8F%E6%9C%BA%E6%95%B0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>简单总结一下C++中rand（）函数的一些用法，方便对拍的时候生成数据</p>
+<h3 id="1-简介">1.简介</h3>
+<p>rand（）函数 包含于头文件<code>cstdlib</code>中。</p>
+<p>rand（）所产生的并非完全随机数，而是一定范围内的伪随机，通过<a href="https://www.cnblogs.com/YangGuangPu/p/12711649.html">小M多项式序列</a>产生。</p>
+<h3 id="2-产生不同随机数的表达式">2.产生不同随机数的表达式</h3>
+<ol>
+<li>
+<p>产生<code>[0,RAND_MAX]</code>间的随机数：<br>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rand();</span><br></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>产生<code>[0,a]</code>范围内的随机数：<br>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rand()%(a+1);</span><br></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>产生<code>[a,b]</code>范围内的随机数：<br>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rand() % (b-a+1) + a;</span><br></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>产生<code>[a,b)</code>的随机整数：<br>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rand() % (b-a) + a;</span><br></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>产生<code>(a,b]</code>范围内的随机整数：<br>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rand() % (b-a) + a + 1;</span><br></pre></td></tr></table></figure></p>
+</li>
+</ol>
+<h3 id="3-使用随机种子产生真随机数">3.使用随机种子产生真随机数</h3>
+<p>使用<code>ctime</code>库中的<code>srand(time(0));</code></p>
+<p>可以以当前时间为种子生成不同的随机数。</p>
+]]></content>
+      <tags>
+        <tag>语言功能</tag>
+        <tag>技巧</tag>
+      </tags>
+  </entry>
 </search>
