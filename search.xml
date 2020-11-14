@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello Hexo</title>
-    <url>/2020/09/05/Hello-Hexo/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-  </entry>
-  <entry>
     <title>初识结构模板：pair类型简谈</title>
     <url>/2020/09/05/%E5%88%9D%E8%AF%86%E7%BB%93%E6%9E%84%E6%A8%A1%E6%9D%BF%EF%BC%9Apair%E7%B1%BB%E5%9E%8B%E7%AE%80%E8%B0%88/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>今天补网课的时候看到<a href="https://www.luogu.com.cn/problem/P1443">P1443 马的遍历</a>这道题，</p>
@@ -516,13 +511,6 @@ A&lt;&lt;2 : 340</p>
         <tag>递归</tag>
         <tag>枚举</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>about me</title>
-    <url>/2020/09/11/about-me/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="a">A</h2>
-<h3 id="bb">BB</h3>
-]]></content>
   </entry>
   <entry>
     <title>基础算法总结:递归,贪心,搜索</title>
