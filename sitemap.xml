@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/tags/index-2.html</loc>
+    
+    <lastmod>2020-11-15</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://example.com/2020/11/14/rand()%E5%87%BD%E6%95%B0%E4%BA%A7%E7%94%9F%E9%9A%8F%E6%9C%BA%E6%95%B0/</loc>
     
     <lastmod>2020-11-14</lastmod>
